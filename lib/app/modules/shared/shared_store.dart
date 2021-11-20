@@ -9,7 +9,7 @@ part 'shared_store.g.dart';
 
 class SharedStore = _SharedStoreBase with _$SharedStore;
 abstract class _SharedStoreBase with Store {
-
+  @observable
   Usuario? usuario;
   //var interstitialAd;
 

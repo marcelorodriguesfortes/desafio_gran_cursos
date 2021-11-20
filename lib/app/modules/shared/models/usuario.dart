@@ -1,5 +1,4 @@
 import 'package:mobx/mobx.dart';
-import 'dart:io';
 part 'usuario.g.dart';
 
 class Usuario = _UsuarioBase with _$Usuario;
@@ -26,6 +25,11 @@ abstract class _UsuarioBase with Store {
   changeEmail(String email) => this.email = email;
 
   @observable
+  String? senha;
+  @action
+  changeSenha(String senha) => this.senha = senha;
+
+  @observable
   String? cep;
   @action
   changeCep(String cep) => this.cep = cep;
@@ -50,6 +54,7 @@ abstract class _UsuarioBase with Store {
       'nome' : nome,
       'telefone' : telefone,
       'email' : email,
+      'senha' : senha,
       'cep' : cep,
       'cidade' : cidade,
       'verificado' : false,
@@ -63,6 +68,7 @@ abstract class _UsuarioBase with Store {
     'nome' : nome,
     'telefone' : telefone,
     'email' : email,
+    'senha' : senha,
     'cep' : cep,
     'cidade' : cidade,
     'verificado' : false,

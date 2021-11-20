@@ -41,11 +41,11 @@ class NoticiasPageState extends State<NoticiasPage> {
             ) :
             CircleAvatar(
               backgroundColor: Colors.white54,
-              child: Text('F',style: TextStyle(color: Colors.black87)),
+              child: Text('G',style: TextStyle(color: Colors.black87)),
             ) :
             CircleAvatar(
               backgroundColor: Colors.white54,
-              child: Text('F',style: TextStyle(color: Colors.black87)),
+              child: Text('G',style: TextStyle(color: Colors.black87)),
             ),
             accountName: sharedStore.usuario != null ? Text(sharedStore.usuario!.nome.toString(), style: TextStyle(fontSize: 20, color: Colors.white),) : GestureDetector(
               onTap: () {

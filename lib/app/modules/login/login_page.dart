@@ -1,7 +1,10 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:desafio_gran_cursos/app/modules/login/login_store.dart';
 import 'package:desafio_gran_cursos/app/modules/shared/constants/colors.dart';
+import 'package:desafio_gran_cursos/app/modules/shared/models/usuario.dart';
 import 'package:desafio_gran_cursos/app/modules/shared/widgets/custom_text.dart';
+import 'package:desafio_gran_cursos/app/modules/shared/widgets/widget_botao.dart';
+import 'package:desafio_gran_cursos/app/modules/shared/widgets/widget_campo.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +18,14 @@ class LoginPage extends StatefulWidget {
 }
 class LoginPageState extends State<LoginPage> {
   final LoginStore store = Modular.get();
-  final tecEmail = TextEditingController();
-  final tecSenha = TextEditingController();
+  final emailTextEditingController = TextEditingController();
+  final senhalTextEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    store.usuario = new Usuario();
+    super.initState();
+  }
 
   void showFloatingFlushbar(BuildContext context, String mensagem) {
     Flushbar(
@@ -28,8 +37,6 @@ class LoginPageState extends State<LoginPage> {
       reverseAnimationCurve: Curves.decelerate,
       forwardAnimationCurve: Curves.elasticOut,
       backgroundColor: Colors.black45,
-      //boxShadows: [BoxShadow(color: Colors.black12, offset: Offset(0.0, 2.0), blurRadius: 60.0)],
-      //backgroundGradient: LinearGradient(colors: [Colors.blueGrey, Colors.black]),
       isDismissible: false,
       duration: Duration(seconds: 2),
       icon: Icon(
@@ -63,32 +70,35 @@ class LoginPageState extends State<LoginPage> {
             Row(
               children: [
                 Text("Login",
-                    style: GoogleFonts.roboto(
-                        fontSize: 30, fontWeight: FontWeight.bold)),
+                    style: GoogleFonts.roboto(fontSize: 30, fontWeight: FontWeight.bold)),
               ],
             ),
             SizedBox(
               height: 25,
             ),
-            TextField(
-              controller: tecEmail,
-              decoration: InputDecoration(
-                  labelText: "E-mail",
-                  hintText: "abc@dominio.com",
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20))),
+
+            WidgetCampo(
+              labelText: 'E-mail',
+              textInputType: TextInputType.text,
+              textEditingController: emailTextEditingController,
+              onChanged: (value){
+                setState(() {
+                  store.usuario!.changeEmail(value);
+                });
+              },
             ),
-            SizedBox(
-              height: 15,
-            ),
-            TextField(
-              controller: tecSenha,
-              obscureText: true,
-              decoration: InputDecoration(
-                  labelText: "Senha",
-                  hintText: "123",
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))
-              ),
+
+            SizedBox(height: 5),
+
+            WidgetCampo(
+              labelText: 'Senha',
+              textInputType: TextInputType.text,
+              textEditingController: senhalTextEditingController,
+              onChanged: (value){
+                setState(() {
+                  store.usuario!.changeSenha(value);
+                });
+              },
             ),
             SizedBox(
               height: 15,
@@ -112,34 +122,19 @@ class LoginPageState extends State<LoginPage> {
             SizedBox(
               height: 15,
             ),
-            InkWell(
-              onTap: () async{
-                if(tecEmail.text.isEmpty || tecSenha.text.isEmpty) {
-                  showFloatingFlushbar(context, 'Preencha todos os campos.');
-                  return;
-                }
 
-                if(await store.login(tecEmail.text, tecSenha.text))
+            WidgetButton(
+              ativo: store.validaCampos() == null ? true : false,
+              descricao: 'Continuar',
+              onPressed: () async{
+                if(await store.login(emailTextEditingController.text, senhalTextEditingController.text))
                   Modular.to.pushNamed('/');
                 else
                   showFloatingFlushbar(context, 'Oops, algo deu errado. Revise seu usuário e senha!');
               },
-              child: Container(
-                decoration: BoxDecoration(color: active,
-                    borderRadius: BorderRadius.circular(20)),
-                alignment: Alignment.center,
-                width: double.maxFinite,
-                padding: EdgeInsets.symmetric(vertical: 16),
-                child: CustomText(
-                  text: "Login",
-                  color: Colors.white,
-                ),
-              ),
             ),
 
-            SizedBox(
-              height: 15,
-            ),
+            SizedBox(height: 5),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -162,7 +157,6 @@ class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Observer(
-
       builder: (_) {
         return Scaffold(
             body: store.isLoading
