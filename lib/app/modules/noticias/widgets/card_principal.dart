@@ -1,10 +1,11 @@
 import 'package:desafio_gran_cursos/app/modules/noticias/models/noticia.dart';
 import 'package:desafio_gran_cursos/app/modules/shared/constants/colors.dart';
+import 'package:desafio_gran_cursos/app/modules/shared/constants/fonts.dart';
 import 'package:flutter/material.dart';
 
-class WidgetCard extends StatelessWidget {
+class CardPrimario extends StatelessWidget {
   final Noticia noticia;
-  const WidgetCard({Key? key, required this.noticia}) : super(key: key);
+  const CardPrimario({Key? key, required this.noticia}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,10 +56,10 @@ class WidgetCard extends StatelessWidget {
           SizedBox(height: 10),
           Row(
             children: [
-              /*Text(
-                noticia.tempo_leitura != null ? noticia.tempo_leitura : '1 minuto',
+              Text(
+                noticia.hora_postagem.toString(),
                 style: kDetailContent,
-              ),*/
+              ),
               SizedBox(width: 10,),
               CircleAvatar(
                 radius: 5,
@@ -66,7 +67,7 @@ class WidgetCard extends StatelessWidget {
               ),
               SizedBox(width: 10,),
               Text(
-                'Estimativa de leitura: 2 minutos',
+                '2 minutos de leitura',
                 style: kDetailContent,
               ),
             ],
