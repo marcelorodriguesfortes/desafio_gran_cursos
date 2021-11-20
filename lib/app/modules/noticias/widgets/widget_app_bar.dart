@@ -46,7 +46,7 @@ WidgetAppBar(){
           alignment: Alignment.topLeft,
           child: TabBar(
               labelColor: Colors.black54,
-              unselectedLabelColor: kGrey1,
+              unselectedLabelColor: grey1,
               unselectedLabelStyle: kNonActiveTabStyle,
               indicatorSize: TabBarIndicatorSize.label,
               isScrollable: true,

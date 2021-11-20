@@ -17,7 +17,7 @@ class CardPrimario extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: kGrey3, width: 1)
+        border: Border.all(color: grey3, width: 1)
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +26,7 @@ class CardPrimario extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 5,
-                backgroundColor: kGrey1,
+                backgroundColor: grey1,
               ),
               SizedBox(width: 10,),
               Text(noticia.categoria, style: kCategoryTitle,)
@@ -63,7 +63,7 @@ class CardPrimario extends StatelessWidget {
               SizedBox(width: 10,),
               CircleAvatar(
                 radius: 5,
-                backgroundColor: kGrey1,
+                backgroundColor: grey1,
               ),
               SizedBox(width: 10,),
               Text(

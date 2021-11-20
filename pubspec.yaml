@@ -31,6 +31,7 @@ dependencies:
   flutter_svg:
   cached_network_image: ^3.1.0
   shared_preferences: any
+  another_flushbar: ^1.10.25
 
 
 dev_dependencies:
