@@ -24,17 +24,33 @@ mixin _$LoginStore on _LoginStoreBase, Store {
     });
   }
 
+  final _$usuarioAtom = Atom(name: '_LoginStoreBase.usuario');
+
+  @override
+  Usuario get usuario {
+    _$usuarioAtom.reportRead();
+    return super.usuario;
+  }
+
+  @override
+  set usuario(Usuario value) {
+    _$usuarioAtom.reportWrite(value, super.usuario, () {
+      super.usuario = value;
+    });
+  }
+
   final _$loginAsyncAction = AsyncAction('_LoginStoreBase.login');
 
   @override
-  Future<bool> login(String usuario, String senha) {
-    return _$loginAsyncAction.run(() => super.login(usuario, senha));
+  Future<bool> login(String email, String senha) {
+    return _$loginAsyncAction.run(() => super.login(email, senha));
   }
 
   @override
   String toString() {
     return '''
-isLoading: ${isLoading}
+isLoading: ${isLoading},
+usuario: ${usuario}
     ''';
   }
 }

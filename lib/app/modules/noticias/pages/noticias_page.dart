@@ -3,11 +3,14 @@ import 'package:desafio_gran_cursos/app/modules/noticias/pages/tab_noticias_popu
 import 'package:desafio_gran_cursos/app/modules/noticias/pages/tab_noticias_recentes.dart';
 import 'package:desafio_gran_cursos/app/modules/noticias/widgets/drawer_item.dart';
 import 'package:desafio_gran_cursos/app/modules/noticias/widgets/widget_app_bar.dart';
+import 'package:desafio_gran_cursos/app/modules/shared/constants/colors.dart';
 import 'package:desafio_gran_cursos/app/modules/shared/shared_store.dart';
 import 'package:desafio_gran_cursos/app/modules/shared/widgets/widget_alert_dialog.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:desafio_gran_cursos/app/modules/noticias/noticias_store.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class NoticiasPage extends StatefulWidget {
   final String title;
@@ -19,23 +22,38 @@ class NoticiasPageState extends State<NoticiasPage> {
   final NoticiasStore store = Modular.get();
   final SharedStore sharedStore = Modular.get();
 
+  @override
+  void initState() {
+    verificaUsuarioLogado();
+    super.initState();
+  }
+
+  Future<void> verificaUsuarioLogado() async{
+    var resposta  = await sharedStore.recuperaUsuarioLogado();
+  }
+
+
   Widget _buildDrawer(){
     return Drawer(
       child: ListView(
         children: <Widget>[
           UserAccountsDrawerHeader(
             currentAccountPicture: sharedStore.usuario != null ? sharedStore.usuario!.urlFoto != null ?
-            CircleAvatar(
-              radius: 40,
-              child: ClipOval(
-                child: SizedBox(
-                    width: 180,
-                    height: 180,
-                    child: CachedNetworkImage(
-                      imageUrl: sharedStore.usuario!.urlFoto!,
-                      placeholder: (context, url) => CircularProgressIndicator(),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
-                    )
+            InkWell(
+              onTap: (){Modular.to.pushNamed('/perfil');},
+              child: CircleAvatar(
+                backgroundColor: active,
+                radius: 40,
+                child: ClipOval(
+                  child: SizedBox(
+                      width: 180,
+                      height: 180,
+                      child: CachedNetworkImage(
+                        imageUrl: sharedStore.usuario!.urlFoto!,
+                        placeholder: (context, url) => CircularProgressIndicator(),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      )
+                  ),
                 ),
               ),
             ) :
@@ -82,14 +100,14 @@ class NoticiasPageState extends State<NoticiasPage> {
             Icons.person_outline_outlined,
                 (){
               if(sharedStore.usuario != null)
-                Modular.to.pushNamed('/meusdados');
+                Modular.to.pushNamed('/perfil');
               else{
                 showDialog(
                     context: context,
                     builder: (context) =>
                         WidgetAlertDialog(
                             onPressed: () {
-                              Modular.to.pushNamed('/login/cliente');
+                              Modular.to.pushNamed('/login');
                             },
                             titulo: 'Atenção',
                             pergunta: 'Você não fez login. Deseja se autenticar?'
@@ -102,24 +120,24 @@ class NoticiasPageState extends State<NoticiasPage> {
             'Sair',
             Icons.exit_to_app,
                 (){
-              showDialog(
-                  context: context,
-                  builder: (context) =>
-                      WidgetAlertDialog(
-                          onPressed: () {
-                            sharedStore.logout();
-                            Modular.to.popUntil(ModalRoute.withName('/'));
-                          },
-                          titulo: 'Atenção',
-                          pergunta: 'Tem certeza que deseja realizar logout?'
-                      )
-              );
+                  showDialog(
+                      context: context,
+                      builder: (context) =>
+                          WidgetAlertDialog(
+                              onPressed: () {
+                                sharedStore.logout();
+                                Modular.to.popUntil(ModalRoute.withName('/'));
+                              },
+                              titulo: 'Atenção',
+                              pergunta: 'Tem certeza que deseja realizar logout?'
+                          )
+                  );
             },
           ) :
           DrawerItem(
             'Fazer login',
             Icons.login,
-                (){Modular.to.pushNamed('/login');},
+            (){Modular.to.pushNamed('/login');},
           ),
         ],
       ),
@@ -133,16 +151,20 @@ class NoticiasPageState extends State<NoticiasPage> {
       child: DefaultTabController(
         length: 2,
         initialIndex: 0,
-        child: Scaffold(
-          drawer: _buildDrawer(),
-          appBar: WidgetAppBar(),
-          body: TabBarView(
-            children: [
-              TabNoticiasRecentes(),
-              TabNoticiasPopulares(),
-            ],
-          ),
+        child: Observer(
+          builder: (_){
+            return Scaffold(
+              drawer: _buildDrawer(),
+              appBar: WidgetAppBar(),
+              body: TabBarView(
+                children: [
+                  TabNoticiasPopulares(),
+                  TabNoticiasRecentes(),
+                ],
+              ),
 
+            );
+          },
         ),
       ),
     );

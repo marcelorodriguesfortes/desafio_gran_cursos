@@ -69,6 +69,21 @@ mixin _$Usuario on _UsuarioBase, Store {
     });
   }
 
+  final _$senhaAtom = Atom(name: '_UsuarioBase.senha');
+
+  @override
+  String? get senha {
+    _$senhaAtom.reportRead();
+    return super.senha;
+  }
+
+  @override
+  set senha(String? value) {
+    _$senhaAtom.reportWrite(value, super.senha, () {
+      super.senha = value;
+    });
+  }
+
   final _$cepAtom = Atom(name: '_UsuarioBase.cep');
 
   @override
@@ -161,6 +176,17 @@ mixin _$Usuario on _UsuarioBase, Store {
   }
 
   @override
+  dynamic changeSenha(String senha) {
+    final _$actionInfo = _$_UsuarioBaseActionController.startAction(
+        name: '_UsuarioBase.changeSenha');
+    try {
+      return super.changeSenha(senha);
+    } finally {
+      _$_UsuarioBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   dynamic changeCep(String cep) {
     final _$actionInfo = _$_UsuarioBaseActionController.startAction(
         name: '_UsuarioBase.changeCep');
@@ -200,6 +226,7 @@ codUsuario: ${codUsuario},
 nome: ${nome},
 telefone: ${telefone},
 email: ${email},
+senha: ${senha},
 cep: ${cep},
 cidade: ${cidade},
 urlFoto: ${urlFoto}

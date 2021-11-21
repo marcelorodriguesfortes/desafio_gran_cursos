@@ -1,35 +1,35 @@
-import 'dart:convert';
-
+import 'package:desafio_gran_cursos/app/modules/shared/repositories/repositorio_usuario.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'models/usuario.dart';
 
 part 'shared_store.g.dart';
 
 class SharedStore = _SharedStoreBase with _$SharedStore;
 abstract class _SharedStoreBase with Store {
+
+  RepositorioUsuario repositorioUsuario = Modular.get();
+
   @observable
   Usuario? usuario;
-  //var interstitialAd;
 
   void logout() {
     removeUsuario();
   }
 
-
   Future<bool> salvaUsuario(Usuario usuario) async {
     try{
-      await save('usuario', usuario);
+      await repositorioUsuario.save('usuario', usuario);
       return true;
     }catch(err){
       return false;
     }
   }
 
+
   Future<bool> removeUsuario() async {
     try{
-      remove('usuario');
+      repositorioUsuario.remove('usuario');
       usuario = null;
       return true;
     }catch(eer){
@@ -37,22 +37,26 @@ abstract class _SharedStoreBase with Store {
     }
   }
 
-  Future save(String key, value) async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString(key, json.encode(value));
-  }
+  Future<bool> recuperaUsuarioLogado() async {
+    Map<String, dynamic>? valor;
 
-  Future<Map<String, dynamic>?> read(String key) async {
-    final prefs = await SharedPreferences.getInstance();
-    if(prefs.containsKey('usuario')) {
-      return json.decode(prefs.getString(key)!);
-    }else {
-      return null;
+    try{
+      valor = await  repositorioUsuario.read('usuario');
+    }catch(eer){
+      valor = null;
     }
+
+    if(valor != null){
+      print('Usuário recuperado com sucesso! Nome:  ' + valor['nome']);
+      usuario = new Usuario();
+      usuario!.changeNome(valor['nome']);
+      usuario!.changeEmail(valor['email']);
+      usuario!.changeCidade(valor['cidade']);
+      usuario!.changeUrlFoto(valor['urlFoto']);
+      return true;
+    }
+    return false;
   }
 
-  remove(String key) async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.remove(key);
-  }
+
 }
