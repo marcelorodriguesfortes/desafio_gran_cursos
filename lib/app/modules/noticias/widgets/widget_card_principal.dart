@@ -1,11 +1,11 @@
 import 'package:desafio_gran_cursos/app/modules/noticias/models/noticia.dart';
 import 'package:desafio_gran_cursos/app/modules/shared/constants/colors.dart';
-import 'package:desafio_gran_cursos/app/modules/shared/constants/fonts.dart';
+import 'package:desafio_gran_cursos/app/modules/noticias/constants/fonts.dart';
 import 'package:flutter/material.dart';
 
-class CardPrimario extends StatelessWidget {
+class WidgetCardPrimario extends StatelessWidget {
   final Noticia noticia;
-  const CardPrimario({Key? key, required this.noticia}) : super(key: key);
+  const WidgetCardPrimario({Key? key, required this.noticia}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class CardPrimario extends StatelessWidget {
                 backgroundColor: grey1,
               ),
               SizedBox(width: 10,),
-              Text(noticia.categoria, style: kCategoryTitle,)
+              Text(noticia.categoria, style: tituloCategoria,)
             ],
           ),
           SizedBox(height: 5),
@@ -51,14 +51,14 @@ class CardPrimario extends StatelessWidget {
             noticia.titulo,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
-            style: kTitleCard,
+            style: tituloCard,
           ),
           SizedBox(height: 10),
           Row(
             children: [
               Text(
                 noticia.hora_postagem.toString(),
-                style: kDetailContent,
+                style: detalheConteudo,
               ),
               SizedBox(width: 10,),
               CircleAvatar(
@@ -68,7 +68,7 @@ class CardPrimario extends StatelessWidget {
               SizedBox(width: 10,),
               Text(
                 '2 minutos de leitura',
-                style: kDetailContent,
+                style: detalheConteudo,
               ),
             ],
           )

@@ -177,21 +177,6 @@ List<Noticia> trendingList = [
 
 List<Noticia> recentList = [
   Noticia(
-    autor: "Nick Chong",
-    categoria: "Bitcoin",
-    favorito: "700",
-    visualizacoes: "41.51K",
-    hora_postagem: "4 hours ago",
-    titulo:
-    "Beware of an Android Spyware Mandrake that went Undetected for Last 4 Years",
-    imagem:
-    "https://i2.wp.com/1.bp.blogspot.com/-eJLbaED73Q0/XsiYfSJ-paI/AAAAAAAAJA4/lDvgPb3NfX8QhkR4Qp79rfua5LXxW4q9QCLcBGAsYHQ/s1600/mandrake%2Bmalware.png?ssl=1",
-    subtitulo:
-    "Just days ago, Bitcoin was trading at \$9,800, just days away from decisively passing \$10,000. Now, the cryptocurrency is trading at \$9,200, having collapsed on the back of fears of Satoshi Nakamoto dumping his cryptocurrency",
-    conteudo:
-    "Just days ago, Bitcoin was trading at \$9,800, just days away from decisively passing \$10,000. Now, the cryptocurrency is trading at \$9,200, having collapsed on the back of fears of Satoshi Nakamoto dumping his cryptocurrency.\n\nIt’s a drop that has had some investors fearing the worst.\n\nYesterday, for instance, Bitcoin closed below a key technical support level: the middle Bollinger Band, which is the 20-day moving average. AI and Cloud specialist at Microsoft Joe McCann, who moonlights as a popular crypto trader, wrote on the matter:“A close below \$9287 for BTC would be bad for bulls, that’s the 20 day.\n\nYet a number of on-chain and fundamental trends have indicated that the cryptocurrency’s outlook remains strong.” ",
-  ),
-  Noticia(
     autor: "BBC News",
     categoria: "Business",
     favorito: "502",
@@ -235,17 +220,18 @@ List<Noticia> recentList = [
     'J.K. Rowling has been drinking a lot and you`d better believe she has some thoughts on Bitcoin.\nNoted TERF and author of The Cuckoo’s Calling, Rowling decided Friday was the perfect time to learn about the cryptocurrency Bitcoin.\n\nNoted TERF and author of The Cuckoo’s Calling, Rowling decided Friday was the perfect time to learn about the cryptocurrency Bitcoin. And so, like any celebrity who wants to start her day off with a ray of positivity, she hopped on Twitter to engage.\n\nOver the course of the next several hours, as legions of crypto try-hards leapt at the opportunity to explain consensus algorithms, Rowling`s nascent views on Bitcoin turned from mildly inquisitive to a friendly mocking.\n\nPerhaps it was the fourth Old Fashioned speaking?\n\n"People are now explaining Bitcoin to me, and honestly, it`s blah blah blah collectibles (My Little Pony?) blah blah blah computers (got one of those) blah blah blah crypto (sounds creepy) blah blah blah understand the risk (I don`t, though.)," she tweeted. "I know you mean to help, but full disclosure: I’m only allowing myself alcohol at weekends during this lockdown and I`m on my fourth very strong Old Fashioned and honestly, you might as well send me a scroll written in Sanskrit."',
   ),
   Noticia(
-    autor: "Darrell Etherington",
-    categoria: "Tech",
-    favorito: "21K",
-    visualizacoes: "42.5K",
-    hora_postagem: "8 Hours ago",
+    autor: "Nick Chong",
+    categoria: "Bitcoin",
+    favorito: "700",
+    visualizacoes: "41.51K",
+    hora_postagem: "4 hours ago",
     titulo:
-    "New non-profit from Google Maps co-creator offers temporary ‘safe’ passes to aid COVID-19 reopening effort",
-    imagem: "https://images.wsj.net/im-190173",
+    "Beware of an Android Spyware Mandrake that went Undetected for Last 4 Years",
+    imagem:
+    "https://i2.wp.com/1.bp.blogspot.com/-eJLbaED73Q0/XsiYfSJ-paI/AAAAAAAAJA4/lDvgPb3NfX8QhkR4Qp79rfua5LXxW4q9QCLcBGAsYHQ/s1600/mandrake%2Bmalware.png?ssl=1",
     subtitulo:
-    "There are a number of different technologies both proposed and in development to help smooth the reopening of parts of the economy even as the threat of the COVID-19 pandemic continues.",
+    "Just days ago, Bitcoin was trading at \$9,800, just days away from decisively passing \$10,000. Now, the cryptocurrency is trading at \$9,200, having collapsed on the back of fears of Satoshi Nakamoto dumping his cryptocurrency",
     conteudo:
-    "There are a number of different technologies both proposed and in development to help smooth the reopening of parts of the economy even as the threat of the COVID-19 pandemic continues. One such tech solution launching today comes from Brian McClendon,  co-founder of Keyhole,  the company that Google  purchased in 2004 that would form the basis of Google Earth and Google Maps. McClendon’s new CVKey Project is a registered nonprofit that is launching with an app for symptom self-assessment that generates a temporary QR code, which will work with participating community facilities as a kind of health “pass” on an opt-in basis.\n\nUltimately, CVKey Project hopes to launch an entire suite of apps dedicated to making it easier to reopen public spaces safely.  Apple and Google recently launched an exposure notification API that would allow CVKey to include those notifications in its apps. CVKey also plans to provide information about facilities open under current government guidelines and their policies to prevent the spread of COVID-19 as much as possible.\n\nThe core element of CVKey Project’s approach, however, is the use of a QR code generated by its app that essentially acts as a verification that you’re “safe” to enter one of these shared spaces. The system is designed with user privacy in mind, according to McClendon. Any identity or health data exists only on a user’s individual device — no date is ever uploaded to a cloud server or shared without a user’s consent. Information is also provided about what that sharing entails. Users voluntarily offer their health info, and the app never asks for location information. Most of what it does can be done without an internet connection at all, McClendon explains.\n\nWhen you generate and scan a QR code at a participating location, a simple binary display (based on the location’s policies) indicates whether you’re cleared to pass. The location won’t see any specifics about your health information. The code simply transmits the particulars of shown symptoms (which ones and how recently, for instance), and then that is matched against the  public space’s policy. The app then provides a “go”/”no-go” response.\n\nMcClendon created CVKey Project with former Google Earth, Google Maps and Uber  co-workers Manik Gupt and Waleed Kadous, as well as Dr. Marci Nielsen, a public health specialist with a long history of public and private institution leadership.\n\nThe apps created by CVKey Project will be available soon, and the nonprofit is looking for potential partners to participate in its program. Like just about everything else designed to address the COVID-19 crisis, it’s not a simple fix, but it could form part of a larger strategy that provides a path forward for dealing with the pandemic.",
+    "Just days ago, Bitcoin was trading at \$9,800, just days away from decisively passing \$10,000. Now, the cryptocurrency is trading at \$9,200, having collapsed on the back of fears of Satoshi Nakamoto dumping his cryptocurrency.\n\nIt’s a drop that has had some investors fearing the worst.\n\nYesterday, for instance, Bitcoin closed below a key technical support level: the middle Bollinger Band, which is the 20-day moving average. AI and Cloud specialist at Microsoft Joe McCann, who moonlights as a popular crypto trader, wrote on the matter:“A close below \$9287 for BTC would be bad for bulls, that’s the 20 day.\n\nYet a number of on-chain and fundamental trends have indicated that the cryptocurrency’s outlook remains strong.” ",
   ),
 ];

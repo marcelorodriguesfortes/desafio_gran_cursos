@@ -9,39 +9,25 @@ part of 'noticias_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$NoticiasStore on _NoticiasStoreBase, Store {
-  final _$valueAtom = Atom(name: '_NoticiasStoreBase.value');
+  final _$noticiaAtom = Atom(name: '_NoticiasStoreBase.noticia');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  Noticia? get noticia {
+    _$noticiaAtom.reportRead();
+    return super.noticia;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set noticia(Noticia? value) {
+    _$noticiaAtom.reportWrite(value, super.noticia, () {
+      super.noticia = value;
     });
-  }
-
-  final _$_NoticiasStoreBaseActionController =
-      ActionController(name: '_NoticiasStoreBase');
-
-  @override
-  void increment() {
-    final _$actionInfo = _$_NoticiasStoreBaseActionController.startAction(
-        name: '_NoticiasStoreBase.increment');
-    try {
-      return super.increment();
-    } finally {
-      _$_NoticiasStoreBaseActionController.endAction(_$actionInfo);
-    }
   }
 
   @override
   String toString() {
     return '''
-value: ${value}
+noticia: ${noticia}
     ''';
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-Widget DrawerItem(String descricao, IconData icone, GestureTapCallback onTap){
+Widget WidgetDrawerItem(String descricao, IconData icone, GestureTapCallback onTap){
   return Column(
     children: [
       ListTile(

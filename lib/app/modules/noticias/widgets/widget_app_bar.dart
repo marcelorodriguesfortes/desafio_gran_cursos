@@ -1,5 +1,5 @@
 import 'package:desafio_gran_cursos/app/modules/shared/constants/colors.dart';
-import 'package:desafio_gran_cursos/app/modules/shared/constants/fonts.dart';
+import 'package:desafio_gran_cursos/app/modules/noticias/constants/fonts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -47,11 +47,11 @@ WidgetAppBar(){
           child: TabBar(
               labelColor: Colors.black54,
               unselectedLabelColor: grey1,
-              unselectedLabelStyle: kNonActiveTabStyle,
+              unselectedLabelStyle: nonActiveTabStyle,
               indicatorSize: TabBarIndicatorSize.label,
               isScrollable: true,
               indicatorColor: Colors.white,
-              labelStyle: kActiveTabStyle.copyWith(fontSize: 25),
+              labelStyle: activeTabStyle.copyWith(fontSize: 25),
               tabs: [
                 Tab(text: 'Recentes',),
                 Tab(text: 'Populares',),

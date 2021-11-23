@@ -19,7 +19,7 @@ abstract class _SharedStoreBase with Store {
 
   Future<bool> salvaUsuario(Usuario usuario) async {
     try{
-      await repositorioUsuario.save('usuario', usuario);
+      await repositorioUsuario.salvaUsuario('usuario', usuario);
       return true;
     }catch(err){
       return false;
@@ -29,7 +29,7 @@ abstract class _SharedStoreBase with Store {
 
   Future<bool> removeUsuario() async {
     try{
-      repositorioUsuario.remove('usuario');
+      repositorioUsuario.removeUsuario('usuario');
       usuario = null;
       return true;
     }catch(eer){
@@ -41,7 +41,7 @@ abstract class _SharedStoreBase with Store {
     Map<String, dynamic>? valor;
 
     try{
-      valor = await  repositorioUsuario.read('usuario');
+      valor = await  repositorioUsuario.recuperaUsuario('usuario');
     }catch(eer){
       valor = null;
     }

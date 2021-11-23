@@ -3,12 +3,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class RepositorioUsuario {
 
-  Future save(String key, value) async {
+  Future salvaUsuario(String key, value) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.setString(key, json.encode(value));
   }
 
-  Future<Map<String, dynamic>?> read(String key) async {
+  Future<Map<String, dynamic>?> recuperaUsuario(String key) async {
     final prefs = await SharedPreferences.getInstance();
     if(prefs.containsKey('usuario')) {
       return json.decode(prefs.getString(key)!);
@@ -17,7 +17,7 @@ class RepositorioUsuario {
     }
   }
 
-  remove(String key) async {
+  removeUsuario(String key) async {
     final prefs = await SharedPreferences.getInstance();
     prefs.remove(key);
   }

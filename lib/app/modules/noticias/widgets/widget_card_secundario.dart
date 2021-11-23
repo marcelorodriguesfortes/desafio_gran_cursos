@@ -1,11 +1,11 @@
 import 'package:desafio_gran_cursos/app/modules/noticias/models/noticia.dart';
 import 'package:desafio_gran_cursos/app/modules/shared/constants/colors.dart';
-import 'package:desafio_gran_cursos/app/modules/shared/constants/fonts.dart';
+import 'package:desafio_gran_cursos/app/modules/noticias/constants/fonts.dart';
 import 'package:flutter/material.dart';
 
-class CardSecundario extends StatelessWidget {
+class WidgetCardSecundario extends StatelessWidget {
   final Noticia noticia;
-  const CardSecundario({Key? key, required this.noticia}) : super(key: key);
+  const WidgetCardSecundario({Key? key, required this.noticia}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class CardSecundario extends StatelessWidget {
         children: [
           Container(
             width: 90,
-            height: 135,
+            height: 145,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 image: DecorationImage(image: NetworkImage(noticia.imagem), fit: BoxFit.cover)
@@ -35,17 +35,17 @@ class CardSecundario extends StatelessWidget {
                 Text(
                   noticia.titulo.toString(),
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                  style: kTitleCard,
+                  maxLines: 1,
+                  style: tituloCard,
                 ),
 
-                SizedBox(height: 4,),
+                SizedBox(height: 8),
 
                 Text(
                   noticia.subtitulo.toString(),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
-                  style: kDetailContent,
+                  style: detalheConteudo,
                 ),
 
                 SizedBox(height: 10),
@@ -54,17 +54,19 @@ class CardSecundario extends StatelessWidget {
                   children: [
                     Text(
                       noticia.hora_postagem.toString(),
-                      style: kDetailContent,
+                      style: detalheConteudo,
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(width: 10),
                     CircleAvatar(
                       radius: 5,
                       backgroundColor: grey1,
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(width: 10),
                     Text(
                       '2 minutos de leitura',
-                      style: kDetailContent,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: detalheConteudo,
                     ),
                   ],
                 )

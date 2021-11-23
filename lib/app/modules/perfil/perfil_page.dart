@@ -1,4 +1,3 @@
-import 'package:another_flushbar/flushbar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:desafio_gran_cursos/app/modules/shared/constants/colors.dart';
 import 'package:desafio_gran_cursos/app/modules/shared/shared_store.dart';
@@ -19,8 +18,7 @@ class PerfilPageState extends State<PerfilPage> {
   final PerfilStore store = Modular.get();
   final SharedStore sharedStore = Modular.get();
 
-
-  _buildListItemExcluirConta(String descricao, GestureTapCallback onTap, String subTitle){
+  _widgetExcluirConta(String descricao, GestureTapCallback onTap, String subTitle){
     return Column(
       children: [
         Padding(
@@ -54,7 +52,6 @@ class PerfilPageState extends State<PerfilPage> {
                   ),
                 ),
               ),
-              trailing: Icon(Icons.arrow_forward_ios_sharp, size: 18, color: Colors.black12,),
               onTap: onTap
           ),
         ),
@@ -63,7 +60,7 @@ class PerfilPageState extends State<PerfilPage> {
     );
   }
 
-  _buildListItem(String descricao, GestureTapCallback onTap, String subTitle){
+  _widgetItemLista(String descricao, GestureTapCallback onTap, String subTitle){
     return Column(
       children: [
         Padding(
@@ -96,7 +93,6 @@ class PerfilPageState extends State<PerfilPage> {
                   ),
                 ),
               ),
-              trailing: Icon(Icons.arrow_forward_ios_sharp, size: 18, color: Colors.black12,),
               onTap: onTap
           ),
         ),
@@ -111,7 +107,7 @@ class PerfilPageState extends State<PerfilPage> {
     ) ;
   }
 
-  _buildBody(double height){
+  _widgetBody(double height){
     return Container(
       height: height,
       color: Colors.white,
@@ -140,19 +136,19 @@ class PerfilPageState extends State<PerfilPage> {
               height: height * 0.8,
               child: ListView(
                 children: [
-                  _buildListItem(
+                  _widgetItemLista(
                       'Nome',
                        (){} ,
                       sharedStore.usuario!.nome.toString()
                   ),
 
-                  _buildListItem(
+                  _widgetItemLista(
                       'E-mail',
                           (){} ,
                       sharedStore.usuario!.email.toString()
                   ),
 
-                  _buildListItem(
+                  _widgetItemLista(
                       'Cidade',
                           (){} ,
                       sharedStore.usuario!.cidade.toString()
@@ -160,7 +156,7 @@ class PerfilPageState extends State<PerfilPage> {
 
                   /*_buildListItem('Alterar senha', () {Modular.to.pushNamed('/alterasenha');} ,'* * * *'),*/
                   Container(height: 30,),
-                  _buildListItemExcluirConta(
+                  _widgetExcluirConta(
                       'Excluir conta',
                           () {
                               showDialog(
@@ -209,7 +205,7 @@ class PerfilPageState extends State<PerfilPage> {
         ),
         body: Container(
           color: Colors.white,
-          child: _buildBody(height),
+          child: _widgetBody(height),
           padding: const EdgeInsets.all(16),
         )
     );

@@ -9,7 +9,10 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Desafio Gran Cursos',
-      theme: ThemeData(primarySwatch: Colors.grey),
+      theme: ThemeData(
+          backgroundColor: Colors.white,
+          primarySwatch: Colors.grey
+      ),
     ).modular();
   }
 }

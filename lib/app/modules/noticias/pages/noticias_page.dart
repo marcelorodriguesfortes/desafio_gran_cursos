@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:desafio_gran_cursos/app/modules/noticias/pages/tab_noticias_populares.dart';
 import 'package:desafio_gran_cursos/app/modules/noticias/pages/tab_noticias_recentes.dart';
-import 'package:desafio_gran_cursos/app/modules/noticias/widgets/drawer_item.dart';
+import 'package:desafio_gran_cursos/app/modules/noticias/pages/tab_noticias_populares.dart';
+import 'package:desafio_gran_cursos/app/modules/noticias/widgets/widget_drawer_item.dart';
 import 'package:desafio_gran_cursos/app/modules/noticias/widgets/widget_app_bar.dart';
 import 'package:desafio_gran_cursos/app/modules/shared/constants/colors.dart';
 import 'package:desafio_gran_cursos/app/modules/shared/shared_store.dart';
@@ -10,7 +10,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:desafio_gran_cursos/app/modules/noticias/noticias_store.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class NoticiasPage extends StatefulWidget {
   final String title;
@@ -28,7 +27,7 @@ class NoticiasPageState extends State<NoticiasPage> {
     super.initState();
   }
 
-  Future<void> verificaUsuarioLogado() async{
+  Future<void> verificaUsuarioLogado() async {
     var resposta  = await sharedStore.recuperaUsuarioLogado();
   }
 
@@ -74,12 +73,12 @@ class NoticiasPageState extends State<NoticiasPage> {
             accountEmail: sharedStore.usuario != null ? Text(sharedStore.usuario!.email!, style: TextStyle(fontSize: 16, color: Colors.white),) : Container(height: 1,),
           ),
 
-          DrawerItem(
+          WidgetDrawerItem(
             'Eventos',
             Icons.calendar_today,
                 (){
                   if(sharedStore.usuario != null)
-                    Modular.to.pushNamed('/meusdados');
+                    Modular.to.pushNamed('/eventos');
                   else{
                     showDialog(
                         context: context,
@@ -95,7 +94,7 @@ class NoticiasPageState extends State<NoticiasPage> {
                   }
             },
           ),
-          DrawerItem(
+          WidgetDrawerItem(
             'Perfil',
             Icons.person_outline_outlined,
                 (){
@@ -116,7 +115,7 @@ class NoticiasPageState extends State<NoticiasPage> {
               }
             },
           ),
-          sharedStore.usuario != null ? DrawerItem(
+          sharedStore.usuario != null ? WidgetDrawerItem(
             'Sair',
             Icons.exit_to_app,
                 (){
@@ -134,7 +133,7 @@ class NoticiasPageState extends State<NoticiasPage> {
                   );
             },
           ) :
-          DrawerItem(
+          WidgetDrawerItem(
             'Fazer login',
             Icons.login,
             (){Modular.to.pushNamed('/login');},
@@ -158,8 +157,8 @@ class NoticiasPageState extends State<NoticiasPage> {
               appBar: WidgetAppBar(),
               body: TabBarView(
                 children: [
-                  TabNoticiasPopulares(),
                   TabNoticiasRecentes(),
+                  TabNoticiasPopulares(),
                 ],
               ),
 
