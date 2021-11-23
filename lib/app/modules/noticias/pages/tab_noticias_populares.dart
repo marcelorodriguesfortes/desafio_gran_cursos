@@ -25,11 +25,11 @@ class TabNoticiasPopulares extends StatelessWidget {
             height: height * 0.5,
             padding: EdgeInsets.only(left: 18),
             child: ListView.builder(
-                itemCount: recentList.length,
+                itemCount: noticiasRecentes.length,
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemBuilder: (context, index){
-                  var noticia = recentList[index];
+                  var noticia = noticiasRecentes[index];
 
                   return InkWell(
                     onTap: (){
@@ -55,11 +55,12 @@ class TabNoticiasPopulares extends StatelessWidget {
           Container(
             height: height * 0.5,
             child: ListView.builder(
-                    itemCount: recentList.length,
+                    itemCount: noticiasRecentes.length,
                     itemBuilder: (context, index){
-                    var noticiasPersonalizadas = popularList[index];
+                    var noticiasPersonalizadas = noticiasPopulares[index];
                     return InkWell(
                       onTap: (){
+                        store.noticia = noticiasPersonalizadas;
                         Modular.to.pushNamed('/detalhenoticia');
                       },
                       child: Container(

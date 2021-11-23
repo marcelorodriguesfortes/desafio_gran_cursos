@@ -22,7 +22,7 @@ class Noticia{
   });
 }
 
-List<Noticia> popularList = [
+List<Noticia> noticiasPopulares = [
   Noticia(
     autor: "Nick Chong",
     categoria: "Bitcoin",
@@ -99,7 +99,7 @@ List<Noticia> popularList = [
   ),
 ];
 
-List<Noticia> trendingList = [
+List<Noticia> noticiasEmAlta = [
   Noticia(
     autor: "Nick Chong",
     categoria: "Bitcoin",
@@ -175,7 +175,7 @@ List<Noticia> trendingList = [
   ),
 ];
 
-List<Noticia> recentList = [
+List<Noticia> noticiasRecentes = [
   Noticia(
     autor: "BBC News",
     categoria: "Business",

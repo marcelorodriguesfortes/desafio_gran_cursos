@@ -23,28 +23,9 @@ class _DetalheNoticiaPageState extends State<DetalheNoticiaPage> {
     return Observer(
       builder: (_){
         return Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(65.0),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(18.0, 35, 18, 0),
-              child: Row(
-                children: [
-                  WidgetBotaoCircular(
-                    icon: Icons.arrow_back_ios,
-                    onTap: () => Modular.to.pop(),
-                  ),
-                  Spacer(),
-                  WidgetBotaoCircular(
-                    icon: Icons.share,
-                    onTap: () {},
-                  ),
-                  WidgetBotaoCircular(
-                    icon: Icons.favorite_border,
-                    onTap: () {},
-                  ),
-                ],
-              ),
-            ),
+          appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.white,
           ),
           body: Container(
             padding: EdgeInsets.symmetric(horizontal: 18),

@@ -19,11 +19,11 @@ class TabNoticiasRecentes extends StatelessWidget {
             height: height * 0.7,
             padding: EdgeInsets.only(left: 18),
             child: ListView.builder(
-                itemCount: popularList.length,
+                itemCount: noticiasPopulares.length,
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 itemBuilder: (context, index){
-                    var noticia = popularList[index];
+                    var noticia = noticiasPopulares[index];
                     return InkWell(
                       onTap: (){
                         store.noticia = noticia;
